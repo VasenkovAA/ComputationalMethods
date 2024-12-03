@@ -10,11 +10,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        # Устанавливаем минимальные размеры для окна
-        self.setMinimumHeight(720)  # Минимальная высота окна 720 пикселей
-        self.setMinimumWidth(900)  # Минимальная ширина окна 1600 пикселей (если нужно)
+        self.setMinimumHeight(720)
+        self.setMinimumWidth(900)
 
-        self.resize(720, 1100)  # Размер по умолчанию при старте
+        self.resize(720, 1100)
         self.setWindowTitle('Calculate Beet')
 
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_StyledBackground, True)
@@ -22,21 +21,16 @@ class MainWindow(QtWidgets.QMainWindow):
         self.central_widget.setObjectName('MainWidget')
         self.setCentralWidget(self.central_widget)
 
-        # Используем вертикальный макет для простоты размещения
         self.layout = QtWidgets.QVBoxLayout(self.central_widget)
         self.layout.setContentsMargins(0, 0, 0, 0)
 
-        # Создаем страницы графика и ввода данных
         self.plot_page = PlotPage()
         self.input_pages_controller = InputPagesController(self.plot_page, self)
 
-        # Добавляем график сверху
         self.layout.addWidget(self.plot_page)
 
-        # Добавляем контроллер вкладок снизу
         self.layout.addWidget(self.input_pages_controller)
 
-        # Создаем меню
         self._create_menubar()
 
     def _create_menubar(self):
