@@ -12,11 +12,10 @@ class InputPagesController(QtWidgets.QTabWidget):
         super(InputPagesController, self).__init__(parent)
         self.setObjectName('PagesController')
 
-        # Устанавливаем минимальный размер для адаптивности
-        self.setMinimumSize(800, 300)  # Увеличиваем минимальную ширину
+        self.setMinimumSize(800, 300)
         self.setSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,  # Растягивание по горизонтали
-            QtWidgets.QSizePolicy.Policy.Fixed  # Фиксированный размер по вертикали
+            QtWidgets.QSizePolicy.Policy.Expanding,
+            QtWidgets.QSizePolicy.Policy.Fixed
         )
 
         _translate = QtCore.QCoreApplication.translate

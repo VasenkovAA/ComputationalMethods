@@ -1,31 +1,29 @@
-from random import uniform
-from numpy.random import normal
 import numpy as np
 from core.algorithms import Algorithms
 
 
 def braunschweig(compos: np.ndarray) -> float:
-    """Calculates the Braunschweig index for a given composition.
+    """Вычисляет индекс Брауншвейга для заданного состава.
 
-    Args:
-        compos (np.ndarray): A 1D numpy array representing the composition (K, Na, N).
+    Аргументы:
+        compos (np.ndarray): Одномерный массив numpy, представляющий состав (K, Na, N).
 
-    Returns:
-        float: The Braunschweig index.
+    Возвращает:
+        float: Индекс Брауншвейга.
     """
     K, Na, N = compos
     return (0.12 * (K + Na) + 0.24 * N + 0.48) / 100
 
 
 def get_inorganic(prod_val: np.ndarray, compos_inorganic: np.ndarray) -> np.ndarray:
-    """Subtracts the inorganic nutrients based on the Braunschweig index.
+    """Вычитает неорганические питательные вещества на основе индекса Брауншвейга.
 
-    Args:
-        prod_val (np.ndarray): A 2D numpy array representing the production values.
-        compos_inorganic (np.ndarray): A 2D numpy array representing the inorganic composition for each variety.
+    Аргументы:
+        prod_val (np.ndarray): Двумерный массив numpy, представляющий значения производства.
+        compos_inorganic (np.ndarray): Двумерный массив numpy, представляющий неорганический состав для каждой разновидности.
 
-    Returns:
-        np.ndarray: The updated production values after subtracting inorganic nutrients.
+    Возвращает:
+        np.ndarray: Обновленные значения производства после вычитания неорганических питательных веществ.
     """
     new_prod_val = prod_val.copy()  # Create a copy to avoid modifying the original array
 
@@ -37,17 +35,17 @@ def get_inorganic(prod_val: np.ndarray, compos_inorganic: np.ndarray) -> np.ndar
 
 
 def generate_uniform_matrix(n: int, min_a: float, max_a: float, min_b: float, max_b: float) -> np.ndarray:
-    """Generates a matrix with uniform random values.
+    """Генерирует матрицу с равномерно распределенными случайными значениями.
 
-    Args:
-        n (int): The size of the matrix (n x n).
-        min_a (float): Minimum value for the first row.
-        max_a (float): Maximum value for the first row.
-        min_b (float): Minimum multiplier for subsequent rows.
-        max_b (float): Maximum multiplier for subsequent rows.
+    Аргументы:
+        n (int): Размер матрицы (n x n).
+        min_a (float): Минимальное значение для первой строки.
+        max_a (float): Максимальное значение для первой строки.
+        min_b (float): Минимальный множитель для последующих строк.
+        max_b (float): Максимальный множитель для последующих строк.
 
-    Returns:
-        np.ndarray: The generated matrix.
+    Возвращает:
+        np.ndarray: Сгенерированная матрица.
     """
     matrix = np.zeros((n, n))
     matrix[0] = np.round(np.random.uniform(min_a, max_a, n), 3)  # Vectorized first row generation
@@ -59,17 +57,17 @@ def generate_uniform_matrix(n: int, min_a: float, max_a: float, min_b: float, ma
 
 
 def generate_normal_matrix(n: int, min_a: float, max_a: float, avg: float, deviation: float) -> np.ndarray:
-    """Generates a matrix with normally distributed random values.
+    """Генерирует матрицу с нормально распределенными случайными значениями.
 
-    Args:
-        n (int): The size of the matrix (n x n).
-        min_a (float): Minimum value for the first row.
-        max_a (float): Maximum value for the first row.
-        avg (float): Mean of the normal distribution.
-        deviation (float): Standard deviation of the normal distribution.
+    Аргументы:
+        n (int): Размер матрицы (n x n).
+        min_a (float): Минимальное значение для первой строки.
+        max_a (float): Максимальное значение для первой строки.
+        avg (float): Среднее значение нормального распределения.
+        deviation (float): Стандартное отклонение нормального распределения.
 
-    Returns:
-        np.ndarray: The generated matrix.
+    Возвращает:
+        np.ndarray: Сгенерированная матрица.
     """
 
     matrix = np.zeros((n, n))
@@ -85,13 +83,13 @@ def generate_normal_matrix(n: int, min_a: float, max_a: float, avg: float, devia
 
 
 def generate_inorganic_matrix(n: int) -> np.ndarray:
-    """Generates a matrix with inorganic composition values.
+    """Генерирует матрицу с неорганическими значениями состава.
 
-    Args:
-        n (int): The number of rows in the matrix.
+    Аргументы:
+        n (int): Количество строк в матрице.
 
-    Returns:
-        np.ndarray: The generated matrix.
+    Возвращает:
+        np.ndarray: Сгенерированная матрица.
     """
     min_K, max_K = 4, 8.7
     min_Na, max_Na = 0.15, 0.92
@@ -107,20 +105,20 @@ def generate_inorganic_matrix(n: int) -> np.ndarray:
 
 def experiment(n: int, t: int, min_a: float, max_a: float, min_b: float, max_b: float,
               consider_inorganic: bool, is_normal: bool) -> Algorithms:
-    """Runs the experiment with specified parameters.
+    """Запускает эксперимент с заданными параметрами.
 
-    Args:
-        n (int): Size of the matrix.
-        t (int): Number of trials.
-        min_a (float): Minimum initial value.
-        max_a (float): Maximum initial value.
-        min_b (float): Minimum multiplier.
-        max_b (float): Maximum multiplier.
-        consider_inorganic (bool): Whether to consider inorganic nutrients.
-        is_normal (bool): Whether to use normal distribution.
+    Аргументы:
+        n (int): Размер матрицы.
+        t (int): Количество испытаний.
+        min_a (float): Минимальное начальное значение.
+        max_a (float): Максимальное начальное значение.
+        min_b (float): Минимальный множитель.
+        max_b (float): Максимальный множитель.
+        consider_inorganic (bool): Нужно ли учитывать неорганические питательные вещества.
+        is_normal (bool): Нужно ли использовать нормальное распределение.
 
-    Returns:
-        Algorithms: The Algorithms object with results.
+    Возвращает:
+        Algorithms: Объект Algorithms с результатами.
     """
     algorithms = Algorithms(n)
 

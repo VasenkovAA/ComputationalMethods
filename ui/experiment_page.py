@@ -1,13 +1,11 @@
-from PyQt6 import QtWidgets
-from PyQt6 import QtCore
-from PyQt6.QtCore import Qt
+
 from PyQt6 import QtGui
 from ui.plot_page import PlotPage
 from core.algorithms import Algorithms
 from core.experement import experiment
 
 
-from ui.input_feild_validation import Int_1_1000_Validator, Double_0_100000_Validator, Double_0_1_Validator, DistributionValidator, InorganicValidator
+from ui.input_feild_validation import Int_1_1000_Validator, Double_0_100000_Validator, Double_0_1_Validator
 
 from PyQt6 import QtWidgets
 from PyQt6 import QtCore

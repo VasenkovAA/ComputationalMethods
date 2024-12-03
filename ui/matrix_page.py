@@ -4,7 +4,7 @@ from PyQt6 import QtCore
 from PyQt6 import QtGui
 from ui.plot_page import PlotPage
 from core.algorithms import Algorithms
-from ui.input_feild_validation import Int_1_1000_Validator, Double_0_100000_Validator, Double_0_1_Validator, DistributionValidator, InorganicValidator
+from ui.input_feild_validation import Int_1_1000_Validator, Double_0_100000_Validator
 
 
 class InputMatrixPage (QtWidgets.QWidget):
