@@ -12,7 +12,7 @@ class InputPagesController(QtWidgets.QTabWidget):
         super(InputPagesController, self).__init__(parent)
         self.setObjectName('PagesController')
 
-        self.setMinimumSize(800, 300)
+        self.setMinimumSize(500, 150)
         self.setSizePolicy(
             QtWidgets.QSizePolicy.Policy.Expanding,
             QtWidgets.QSizePolicy.Policy.Fixed

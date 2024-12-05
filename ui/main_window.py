@@ -10,10 +10,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        self.setMinimumHeight(720)
-        self.setMinimumWidth(900)
+        self.setMinimumHeight(200)
+        self.setMinimumWidth(500)
 
-        self.resize(720, 1100)
+        self.resize(200, 800)
         self.setWindowTitle('Calculate Beet')
 
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_StyledBackground, True)

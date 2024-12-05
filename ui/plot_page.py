@@ -64,7 +64,7 @@ class PlotPage(QtWidgets.QWidget):
         self.setObjectName('PlotPage')
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_StyledBackground, True)
         self.grid = QtWidgets.QGridLayout(self)
-        self.setMinimumSize(700, 600)
+        self.setMinimumSize(300, 200)
         self.graph = pg.PlotWidget()
         self.graph.setBackground(None)
         self.graph.setAxisItems({'bottom': self.axis_x, 'left': self.axis_y})
