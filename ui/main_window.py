@@ -3,6 +3,7 @@ from PyQt6 import QtCore
 from PyQt6 import QtGui
 from ui.input_data_pages import InputPagesController
 from ui.plot_page import PlotPage
+import os
 
 class MainWindow(QtWidgets.QMainWindow):
     """Основное окно приложения"""
@@ -10,10 +11,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        self.setMinimumHeight(200)
-        self.setMinimumWidth(500)
+        self.setMinimumHeight(300)
+        self.setMinimumWidth(700)
 
-        self.resize(200, 800)
+        self.resize(400, 900)
         self.setWindowTitle('Calculate Beet')
 
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_StyledBackground, True)
@@ -32,6 +33,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.layout.addWidget(self.input_pages_controller)
 
         self._create_menubar()
+        with open(os.path.join(os.path.dirname(__file__), 'style.qss'), 'r') as file:
+            self.setStyleSheet(file.read())
 
     def _create_menubar(self):
         menubar = self.menuBar()
@@ -65,3 +68,4 @@ class MainWindow(QtWidgets.QMainWindow):
         settings_dialog = QtWidgets.QDialog(self)
         settings_dialog.setWindowTitle("Настройки интерфейса")
         settings_dialog.exec()
+

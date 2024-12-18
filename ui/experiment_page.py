@@ -521,9 +521,25 @@ class InputExperimentPage(QtWidgets.QWidget):
         value_labels = [self.ans_label_2, self.ans_label_4, self.ans_label_6,
                         self.ans_label_8, self.ans_label_10, self.ans_label_12]
 
+        # Инициализация переменных для определения наилучшего алгоритма
+        best_algorithm_index = None
+        best_value = float('inf')  # Предполагаем, что мы минимизируем значение
+
         for i in range(len(name_labels)):
             name_labels[i].setText(algorithms[i].name + ':')
             value_labels[i].setText(str(round(algorithms[i].ans[-1], 2)))
+
+            # Проверка наилучшего алгоритма
+            if algorithms[i].ans[-1] < best_value:
+                best_value = algorithms[i].ans[-1]
+                best_algorithm_index = i
+
+        # Вывод сообщения о наилучшем алгоритме
+        if best_algorithm_index is not None:
+            best_algorithm_name = algorithms[best_algorithm_index].name
+            message = f"Наилучший алгоритм: {best_algorithm_name} с значением {round(best_value, 2)}"
+            # Здесь можно использовать QLabel или QMessageBox для отображения сообщения
+            QtWidgets.QMessageBox.information(self, "Результат", message)
 
     def clear_answers_tab(self):
         self.pushButton_4.setVisible(False)

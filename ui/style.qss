@@ -1,0 +1,320 @@
+QWidget {
+  background-color: #EAEAEA;
+  font: 75 italic 15px "Century Gothic";
+}
+
+QWidget[exp_style="true"]{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+QLineEdit[exp_style="true"]{
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px solid #e0e4e7;
+    padding: -7px 0px;
+    margin-right: 20px;
+    margin-left: 20px;
+    font: 75 40px "Century Gothic";
+    font-weight: bold;
+}
+QLineEdit:focus[exp_style="true"]{
+    border: none;
+    border-bottom: 3px solid #d0e3ff;
+}
+QLabel[exp_style="true"]{
+  background-color: rgba(0, 0, 0, 0);
+}
+QLabel[ans_style="true"]{
+  padding: 1px 0px;
+}
+QLabel[exp_style="true"][error="true"] {
+  color: #A04D73;
+  font-size: 13px;
+  font-weight: normal;
+}
+QLabel[exp_style="true"][heading = "true"]{
+  font-size: 15px;
+}
+
+QWidget[exp_style="true"][subheading = "true"]{
+  font: 75 18px "Century Gothic";
+  font-weight: bold;
+}
+
+QWidget#vertical_view {
+    border: 3px solid #EAEAEA;
+    border-radius: 10px;
+}
+
+/*1st block*/
+QWidget#lineEdit_1,
+QWidget#label,
+QWidget#label_15{
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+}
+QWidget#lineEdit_1{
+  border-bottom: 2px solid #ffffff;
+}
+QWidget#lineEdit_1:focus{
+  border-bottom: 3px solid #ffffff;
+}
+/*2nd block*/
+QWidget#lineEdit_2,
+QWidget#lineEdit_3,
+QWidget#label_2,
+QWidget#label_3,
+QWidget#label_4{
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+}
+QWidget#lineEdit_2,
+QWidget#lineEdit_3{
+  border-bottom: 2px solid #ffffff;
+}
+QWidget#lineEdit_2:focus,
+QWidget#lineEdit_3:focus{
+  border-bottom: 3px solid #ffffff;
+}
+
+/*3rd block*/
+QWidget#lineEdit_7,
+QWidget#lineEdit_8,
+QWidget#label_5,
+QWidget#label_11,
+QWidget#label_12,
+QWidget#radioButton_1,
+QWidget#radioButton_2{
+  color: #1C4570;
+  background-color: rgba(0, 0, 0, 0);
+}
+QWidget#lineEdit_7,
+QWidget#lineEdit_8{
+  border-bottom: 2px solid #1C4570;
+}
+QWidget#lineEdit_7:focus,
+QWidget#lineEdit_8:focus{
+  border-bottom: 3px solid #1C4570;
+}
+QWidget#radioButton_1,
+QWidget#radioButton_2{
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+QWidget#graph_icon {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+QWidget#label_back_1, QWidget#label_back_4, QWidget#label_back_8{
+    background-color: #A04D73;
+    border: 3px solid #A04D73;
+    border-radius: 10px;
+}
+
+QWidget#label_back_2, QWidget#label_back_6{
+    background-color: #1C4570;
+    border: 3px solid #1C4570;
+    border-radius: 10px;
+}
+
+QWidget#label_back_3, QWidget#label_back_5, QWidget#label_back_7{
+    background-color: #EAEAEA;
+    border: 3px solid #EAEAEA;
+    border-radius: 10px;
+}
+
+/*4th block*/
+QWidget#checkBox{
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+}
+QWidget#checkBox{
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/*5th block*/
+QWidget#label_6,
+QWidget#lineEdit_4{
+  color: #1C4570;
+  background-color: rgba(0, 0, 0, 0);
+}
+QWidget#lineEdit_4{
+  border-bottom: 2px solid #1C4570;
+}
+QWidget#lineEdit_4:focus{
+  border-bottom: 3px solid #1C4570;
+}
+
+/*2nd tab*/
+/*1th block*/
+QWidget#label_8,
+QWidget#lineEdit_5{
+  color: #ffffff;
+}
+QWidget#lineEdit_5{
+  border-bottom: 2px solid #ffffff;
+}
+QWidget#lineEdit_5:focus{
+  border-bottom: 3px solid #ffffff;
+}
+
+QWidget#lbl_1, QWidget#lbl_2 {
+    background-color: rgba(0, 0, 0, 0);
+    color: #1C4570;
+}
+QWidget#lbl_1 {
+    margin-bottom: 10px;
+}
+
+QWidget#lbl_2 {
+    margin-left: 36px;
+}
+
+/*3rd block*/
+QWidget#label_13,
+QWidget#radioButton_3,
+QWidget#radioButton_4,
+QWidget#radioButton_5,
+QWidget#radioButton_6,
+QWidget#radioButton_7,
+QWidget#radioButton_8{
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+}
+QWidget#radioButton_3,
+QWidget#radioButton_4,
+QWidget#radioButton_5,
+QWidget#radioButton_6,
+QWidget#radioButton_7,
+QWidget#radioButton_8{
+  margin: 5px 10px;
+}
+
+QTabWidget::pane{
+  border: 10px solid #6A8DC1;
+  border-radius: 30px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding: -1px;
+}
+
+
+QWidget#InputMatrixPage {
+    background-color: #6A8DC1;
+}
+
+QTabBar::tab{
+    background-color: #1C4570;
+    color: #ffffff;
+    font: 75 15px "Century Gothic";
+    font-weight: bold;
+}
+QTabBar::tab::selected{
+   background-color: #6A8DC1;
+}
+
+QLabel[heading="true"] {
+  color: #464d55;
+  font-weight: bold;
+  font-size: 16px;
+}
+QLabel[subheading="true"] {
+  color: #0f1925;
+  font-size: 14px;
+  font-weight: normal;
+}
+QLabel[error="true"] {
+  color: red;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+
+QLineEdit {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    border: 2px solid #808080;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    color: #1C4570;
+    font: bold 25px "Century Gothic";
+}
+
+QLineEdit[small_cell="true"] {
+    font: bold 13px "Century Gothic";
+}
+
+QLineEdit:focus {
+  border: 3px solid #1C4570;
+}
+
+QLineEdit::placeholder {
+  color: #767e89;
+}
+
+QWidget QPushButton {
+  background-color: #1C4570;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 3px solid #1C4570;
+  margin-top: 0px;
+  outline: 0px;
+}
+
+QPushButton:hover,
+QPushButton:focus {
+  border: 3px solid #9ac3fe;
+}
+QPushButton::disabled{
+  background-color: #A9A9A9;
+  color: #696969;
+  border-color: #808080;
+}
+
+QFrame[frameShape="4"],
+QFrame[frameShape="5"]
+{
+  border: none;
+  background: #0d6efd;
+}
+
+QRadioButton[exp_style="true"]{
+  margin-bottom: 0px;
+}
+QRadioButton[exp_style="true"]::indicator{
+  height: 32px;
+  width: 32px;
+}
+
+QRadioButton[exp_style="true"][color_of_back_label="white"]:unchecked{
+}
+QRadioButton[exp_style="true"][color_of_back_label="white"]::indicator:unchecked:hover,
+
+
+QRadioButton[exp_style="true"][color_of_back_label="white"]::indicator:checked:hover,
+
+
+
+QRadioButton[exp_style="true"][color_of_back_label="red"]::indicator:unchecked:hover,
+
+
+QRadioButton[exp_style="true"][color_of_back_label="red"]::indicator:checked:hover,
+
+
+
+QCheckBox[exp_style="true"]::indicator{
+  height: 32px;
+  width: 32px;
+}
+
+
+QCheckBox[plot_style="true"]::indicator{
+  height: 16px;
+  width: 16px;
+}

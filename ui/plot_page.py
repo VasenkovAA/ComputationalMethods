@@ -16,6 +16,7 @@ class ColoredAxis(pg.AxisItem):
         if self.axisPen is None:
             self.axisPen = self.pen()
 
+
     def drawPicture(self, p, axisSpec, tickSpecs, textSpecs):
         p.setRenderHint(p.RenderHint.Antialiasing, False)
         p.setRenderHint(p.RenderHint.TextAntialiasing, True)
@@ -116,12 +117,18 @@ class PlotPage(QtWidgets.QWidget):
         self.graph.clear()
         self.lines.clear()
         self.algorithms = algorithms
-        self.x = [i for i in range(1, len(algorithms[0].ans) + 1)]
+
+        self.graph.setXRange(0, 100)
+
+        self.x = [i for i in range(1, min(len(algorithms[0].ans), 100) + 1)]
+
         self.graph.setLayout(self.horizontal_for_checkboxes)
+
         for i in range(len(algorithms)):
             self.line_checkboxes[i].setVisible(True)
             if self.line_checkboxes[i].isChecked():
-                self.lines.append(self.graph.plot(self.x, algorithms[i].ans, name=algorithms[i].name, pen=self.pens[i]))
+                data_to_plot = algorithms[i].ans[:100] if len(algorithms[i].ans) > 100 else algorithms[i].ans
+                self.lines.append(self.graph.plot(self.x, data_to_plot, name=algorithms[i].name, pen=self.pens[i]))
             else:
                 self.lines.append(self.graph.plot([], [], name=algorithms[i].name, pen=self.pens[i]))
 
