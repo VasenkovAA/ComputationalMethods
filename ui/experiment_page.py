@@ -186,7 +186,7 @@ class InputExperimentPage(QtWidgets.QWidget):
         self.pushButton_6 = QtWidgets.QPushButton(parent=self)
         self.pushButton_6.clicked.connect(self.fill_params_from_file)
         self.pushButton_6.setObjectName("pushButton_6")
-        self.gridLayout.addWidget(self.pushButton_6, 16, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton_6, 18, 0, 1, 1)
 
         self.lineEdit_4 = QtWidgets.QLineEdit(parent=self)
         self.lineEdit_4.setValidator(Int_1_1000_Validator())
@@ -210,7 +210,7 @@ class InputExperimentPage(QtWidgets.QWidget):
         self.pushButton.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.pushButton.setDefault(True)
         self.pushButton.setObjectName("pushButton")
-        self.gridLayout.addWidget(self.pushButton, 17, 0, 1, 1)
+        self.gridLayout.addWidget(self.pushButton, 19, 0, 1, 1)
 
         spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
                                             QtWidgets.QSizePolicy.Policy.Maximum)
@@ -220,6 +220,8 @@ class InputExperimentPage(QtWidgets.QWidget):
         self.checkBox.setObjectName("checkBox")
         self.checkBox.stateChanged.connect(self.clear_answers_tab)
         self.gridLayout.addWidget(self.checkBox, 12, 0, 1, 2)
+        
+        
 
         self.radioButton_1 = QtWidgets.QRadioButton(parent=self)
         self.radioButton_1.setObjectName("radioButton_1")
@@ -239,7 +241,7 @@ class InputExperimentPage(QtWidgets.QWidget):
         self.label_7.setAlignment(
             QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft |
             QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.gridLayout.addWidget(self.label_7, 17, 1, 1, 1)
+        self.gridLayout.addWidget(self.label_7, 19, 1, 1, 1)
 
         self.gridLayout_8.addLayout(self.gridLayout, 0, 0, 1, 1)
         spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum,
@@ -327,6 +329,30 @@ class InputExperimentPage(QtWidgets.QWidget):
         self.ans_label_10.setText("")
         self.ans_label_10.setObjectName("ans_label_10")
         self.gridLayout_4.addWidget(self.ans_label_10, 2, 1, 1, 1)
+       
+        
+        
+        # Заголовок для первого поля ввода
+        self.label1 = QtWidgets.QLabel("Дозаривание(0,0 - отключено):", self)
+        self.gridLayout.addWidget(self.label1, 16, 0)
+        self.label1 = QtWidgets.QLabel("min:", self)
+        self.gridLayout.addWidget(self.label1, 17, 0)
+
+        # Поле для ввода первого числа
+        self.inputField1 = QtWidgets.QLineEdit(self)
+        self.gridLayout.addWidget(self.inputField1, 17, 1)
+        self.inputField1.setText("0")  # Устанавливаем 0 по умолчанию
+
+        # Заголовок для второго поля ввода
+        self.label2 = QtWidgets.QLabel("max:", self)
+        self.gridLayout.addWidget(self.label2, 17, 2)
+
+        # Поле для ввода второго числа
+        self.inputField2 = QtWidgets.QLineEdit(self)
+        self.gridLayout.addWidget(self.inputField2, 17, 3)
+        self.inputField2.setText("0")  # Устанавливаем 0 по умолчанию
+
+
 
         self.ans_label_5 = QtWidgets.QLabel(parent=self)
         self.ans_label_5.setText("")
@@ -521,24 +547,24 @@ class InputExperimentPage(QtWidgets.QWidget):
         value_labels = [self.ans_label_2, self.ans_label_4, self.ans_label_6,
                         self.ans_label_8, self.ans_label_10, self.ans_label_12]
 
-        # Инициализация переменных для определения наилучшего алгоритма
+    # Инициализация переменных для определения наилучшего алгоритма
         best_algorithm_index = None
-        best_value = float('inf')  # Предполагаем, что мы минимизируем значение
+        best_value = float('-inf')  # Предполагаем, что мы максимизируем значение
 
         for i in range(len(name_labels)):
             name_labels[i].setText(algorithms[i].name + ':')
             value_labels[i].setText(str(round(algorithms[i].ans[-1], 2)))
 
-            # Проверка наилучшего алгоритма
-            if algorithms[i].ans[-1] < best_value:
+        # Проверка наилучшего алгоритма
+            if algorithms[i].ans[-1] > best_value:  # Изменено на '>'
                 best_value = algorithms[i].ans[-1]
                 best_algorithm_index = i
 
-        # Вывод сообщения о наилучшем алгоритме
+    # Вывод сообщения о наилучшем алгоритме
         if best_algorithm_index is not None:
             best_algorithm_name = algorithms[best_algorithm_index].name
-            message = f"Наилучший алгоритм: {best_algorithm_name} с значением {round(best_value, 2)}"
-            # Здесь можно использовать QLabel или QMessageBox для отображения сообщения
+            message = f"Наилучший алгоритм: {best_algorithm_name}"
+        # Здесь можно использовать QLabel или QMessageBox для отображения сообщения
             QtWidgets.QMessageBox.information(self, "Результат", message)
 
     def clear_answers_tab(self):
@@ -605,8 +631,9 @@ class InputExperimentPage(QtWidgets.QWidget):
         if not self.__check_params(n, t, min_a, max_a, min_b, max_b, is_normal):
             self.clear_answers_tab()
             return
-
-        algorithms: Algorithms = experiment(n, t, min_a, max_a, min_b, max_b, organic, is_normal)
+        ripening_min = float(self.inputField1.text())
+        ripening_max = float(self.inputField2.text())
+        algorithms: Algorithms = experiment(n, t, min_a, max_a, min_b, max_b, organic, is_normal, ripening_min, ripening_max)
         self.write_answers(algorithms)
         self.plot_page.print_plots(algorithms)
         errors = algorithms.calculate_error()
